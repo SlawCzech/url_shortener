@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
             name="URL",
             fields=[
                 ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("url", models.CharField(max_length=2000)),
+                ("original_url", models.CharField(max_length=2000)),
                 ("short_url", models.CharField(max_length=30)),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
