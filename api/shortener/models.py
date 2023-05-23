@@ -7,7 +7,7 @@ class URL(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.url[:30]} -> {self.short_url}"
+        return f"{self.original_url[:30]} -> {self.short_url}"
 
     class Meta:
         verbose_name = "URL"
