@@ -1,3 +1,5 @@
+from typing import Any
+
 from rest_framework.generics import get_object_or_404
 from django.views.generic import RedirectView
 from rest_framework import generics, status
@@ -10,8 +12,6 @@ from .serializers import URLSerializer
 
 
 class CreateShortURLApiView(generics.CreateAPIView):
-<<<<<<< HEAD
-=======
     """
     create:
     Creates a short URL from the provided original URL.
@@ -30,7 +30,6 @@ class CreateShortURLApiView(generics.CreateAPIView):
     }
     """
 
->>>>>>> 235e532 (reconfigure schema and swagger)
     queryset = models.URL.objects.all()
     serializer_class = serializers.OriginalURLSerializer
 
@@ -45,9 +44,6 @@ class CreateShortURLApiView(generics.CreateAPIView):
 
 
 class ShortUrlRedirectView(RedirectView):
-<<<<<<< HEAD
-    def get_redirect_url(self, *args, short_url, **kwargs):
-=======
     """
     get:
     Redirects the user to the original URL from the provided short URL.
@@ -61,7 +57,6 @@ class ShortUrlRedirectView(RedirectView):
     """
 
     def get_redirect_url(self, *args: Any, short_url: str, **kwargs: Any) -> str | None:
->>>>>>> 235e532 (reconfigure schema and swagger)
         url = get_object_or_404(URL, short_url=short_url)
 
         return url.original_url
