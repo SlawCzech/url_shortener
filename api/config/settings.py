@@ -141,7 +141,7 @@ SPECTACULAR_SETTINGS = {
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 ALLOWED_HOSTS = [
     "localhost",
-    "http://127.0.0.1",
+    "127.0.0.1",
     "peaceful-harbor-90076.herokuapp.com",
     "https://peaceful-harbor-90076.herokuapp.com/",
 ]
