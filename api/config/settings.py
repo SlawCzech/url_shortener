@@ -142,4 +142,15 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 INTERNAL_IPS = ALLOWED_HOSTS
 
-CSRF_TRUSTED_ORIGINS = ("https://peaceful-harbor-90076.herokuapp.com",)
+CSRF_TRUSTED_ORIGINS = os.environ.get("DJ_CSRF_TRUSTED_ORIGINS", "").split()
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ.get("REDIS_CONNECTION_STRING"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
