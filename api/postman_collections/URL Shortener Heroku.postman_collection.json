@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "247aac2f-3a78-473e-bae0-7c730fe367b0",
+		"name": "URL Shortener Heroku",
+		"description": "A Django URL shortener app is a web application that generates short, customized links that redirect to longer URLs. It uses Django and a database to store original and short URLs, and may incorporate third-party services for URL shortening. The app is useful for simplifying the sharing of links online.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22930087"
+	},
+	"item": [
+		{
+			"name": "api/v1/urls/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"original_url\": \"https://wiadomosci.gazeta.pl/wiadomosci/7,114884,29784213,kaczynski-ma-farta-jak-tusk-gospodarka-pis-owi-sprzyja-nie.html#s=BoxMMtImg1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://peaceful-harbor-90076.herokuapp.com/api/v1/urls/",
+					"protocol": "https",
+					"host": [
+						"peaceful-harbor-90076",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"urls",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
