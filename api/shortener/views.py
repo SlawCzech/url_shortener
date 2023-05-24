@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.core.cache import cache
 from rest_framework.generics import get_object_or_404
 from django.views.generic import RedirectView
 from rest_framework import generics, status
@@ -38,6 +39,8 @@ class CreateShortURLApiView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         url = serializer.save()
 
+        cache.set(url.short_url, url.original_url, timeout=60 * 60)
+
         short_url = URLSerializer(instance=url, context={"request": request})
 
         return Response(data=short_url.data, status=status.HTTP_201_CREATED)
@@ -57,6 +60,11 @@ class ShortUrlRedirectView(RedirectView):
     """
 
     def get_redirect_url(self, *args: Any, short_url: str, **kwargs: Any) -> str | None:
-        url = get_object_or_404(URL, short_url=short_url)
+        url = cache.get(short_url)
 
-        return url.original_url
+        if not url:
+            instance = get_object_or_404(URL, short_url=short_url)
+            cache.set(instance.short_url, instance.original_url, timeout=60 * 60)
+            url = instance.original_url
+
+        return url
