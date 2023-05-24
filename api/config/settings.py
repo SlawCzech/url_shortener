@@ -20,12 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-gi6cj4hlj3ch!f(h*h&8$88bs)3bo^5ya$kz50ruff93ee7!g*"
+SECRET_KEY = "secret"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ["0.0.0.0"]
 
 # Application definition
 
@@ -114,7 +112,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/staticfiles/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -133,3 +137,14 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+ALLOWED_HOSTS = [
+    "localhost",
+    "http://127.0.0.1",
+    "peaceful-harbor-90076.herokuapp.com",
+    "https://peaceful-harbor-90076.herokuapp.com/",
+]
+INTERNAL_IPS = ALLOWED_HOSTS
+
+CSRF_TRUSTED_ORIGINS = ("https://peaceful-harbor-90076.herokuapp.com",)
