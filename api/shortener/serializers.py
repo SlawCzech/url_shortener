@@ -1,5 +1,5 @@
-from rest_framework import serializers
 import shortuuid
+from rest_framework import serializers
 
 from .models import URL
 
