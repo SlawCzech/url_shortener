@@ -6,7 +6,6 @@
 venv
 
 #django
-db.sqlite3
 .mypy_cache
 .pytest_cache
 __pycache__
