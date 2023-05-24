@@ -26,7 +26,7 @@ class CreateShortURLApiView(generics.CreateAPIView):
     The response contains the original URL and the shortened URL:
     {
         "url": "http://example.com",
-        "short_url": "http://your-domain.com/abcd"
+        "short_url": "https://peaceful-harbor-90076.herokuapp.com/abcde/"
     }
     """
 
@@ -49,7 +49,7 @@ class ShortUrlRedirectView(RedirectView):
     Redirects the user to the original URL from the provided short URL.
 
     Expects the short URL to be part of the path, like:
-    http://your-domain.com/abcd
+    https://peaceful-harbor-90076.herokuapp.com/abcde/
 
     Where "abcd" is the short URL.
 
